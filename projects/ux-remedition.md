@@ -1,10 +1,6 @@
 ---
 title: UX Remediation Project
-description: >-
-  For this project, customer had identified their initial Employee Centre was
-  receiving poor feedback from users and needed an upgrade. 
-
-  Upon meeting the customer we performed a number of workshops and an analysis on the existing Employee Center and Taxonomy, identifying areas for improvement with UX, navigation, performance and maintainability throughout future upgrades. 
+description: Portal remediation project to enhance an existing Employee Center
 date: 2026-02-05T17:36:51.259Z
 status: In Progress
 featured_image: /images/uploads/new-site.png
