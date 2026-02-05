@@ -423,7 +423,7 @@
                             </div>
                         </header>
 
-                        ${post.featured_image ? `
+                        ${post.featured_image && type !== 'project' ? `
                             <div class="post-featured-image">
                                 <img src="${post.featured_image}" alt="${post.title}">
                             </div>
