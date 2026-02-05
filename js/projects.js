@@ -43,7 +43,11 @@ function displayProjects(projects) {
 
         return `
             <div class="project-card">
-                <div class="project-image">${icon}</div>
+                ${project.featured_image ?
+                    `<div class="project-image" style="background-image: url('${project.featured_image}'); background-size: cover; background-position: center;">
+                    </div>` :
+                    `<div class="project-image">${icon}</div>`
+                }
                 <div class="project-info">
                     <h3 class="display">${project.title}</h3>
                     <div class="project-tags">
