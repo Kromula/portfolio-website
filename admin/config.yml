@@ -54,7 +54,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Description", name: "description", widget: "text", hint: "Brief summary for homepage card (2-3 sentences). For full formatted content, use Project Details below."}
       - {label: "Client/Company", name: "client", widget: "string", required: false}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Status", name: "status", widget: "select", options: ["Completed", "In Progress", "Planned"], default: "Completed"}

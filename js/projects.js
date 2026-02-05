@@ -56,7 +56,7 @@ function displayProjects(projects) {
                             `<span class="tag">${tag}</span>`
                         ).join('') : ''}
                     </div>
-                    ${project.description ? `<p class="project-description">${project.description}</p>` : ''}
+                    ${project.description ? `<p class="project-description">${project.description.replace(/\n/g, '<br>')}</p>` : ''}
                     ${project.metrics && project.metrics.length > 0 ? `
                         <ul class="project-metrics">
                             ${project.metrics.slice(0, 2).map(metric =>
