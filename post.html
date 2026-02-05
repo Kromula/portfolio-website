@@ -283,7 +283,7 @@
         // Get slug from URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const slug = urlParams.get('slug');
-        const type = urlParams.get('type') || 'blog'; // blog or how-to
+        const type = urlParams.get('type') || 'blog'; // blog, how-to, or project
 
         if (!slug) {
             document.getElementById('post-container').innerHTML = `
@@ -299,7 +299,7 @@
         async function loadPost(slug, type) {
             try {
                 const loader = new MarkdownLoader('Kromula/portfolio-website', 'master');
-                const directory = type === 'how-to' ? 'how-to' : 'blog';
+                const directory = type === 'how-to' ? 'how-to' : type === 'project' ? 'projects' : 'blog';
                 const url = `https://raw.githubusercontent.com/Kromula/portfolio-website/master/${directory}/${slug}.md`;
 
                 const post = await loader.fetchAndParse(url);
@@ -315,6 +315,9 @@
                 if (type === 'how-to') {
                     document.querySelector('.back-link a').href = 'how-to.html';
                     document.querySelector('.back-link a').textContent = '← Back to How-To Guides';
+                } else if (type === 'project') {
+                    document.querySelector('.back-link a').href = 'index.html#projects';
+                    document.querySelector('.back-link a').textContent = '← Back to Projects';
                 }
 
                 // Convert markdown to HTML

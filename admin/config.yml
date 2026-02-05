@@ -48,3 +48,25 @@ collections:
       - {label: "Category", name: "category", widget: "select", options: ["ITSM", "Employee Center", "App Engine", "CMDB", "Portal", "Integration", "Workflow", "Automation"]}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
+
+  # Projects Collection
+  - name: "projects"
+    label: "Projects"
+    folder: "projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Client/Company", name: "client", widget: "string", required: false}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Status", name: "status", widget: "select", options: ["Completed", "In Progress", "Planned"], default: "Completed"}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Icon Emoji", name: "icon", widget: "string", required: false, hint: "Single emoji for card display (e.g., 🚀, 📊, 🔧)"}
+      - {label: "Technologies/Tags", name: "tags", widget: "list"}
+      - {label: "Category", name: "category", widget: "select", options: ["ITSM", "Employee Center", "App Engine", "CMDB", "Portal", "Integration", "Automation", "Custom Application"]}
+      - {label: "Project Details", name: "body", widget: "markdown", required: false, hint: "Full project description and details"}
+      - {label: "External Link", name: "link", widget: "string", required: false, hint: "Link to project or case study"}
+      - {label: "Achievements/Metrics", name: "metrics", widget: "list", required: false, hint: "List key achievements or metrics (e.g., '40% reduction in ticket time')"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: true, hint: "Show on homepage?"}
+      - {label: "Order", name: "order", widget: "number", default: 0, hint: "Display order (lower numbers first)"}

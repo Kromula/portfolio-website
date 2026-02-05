@@ -499,6 +499,41 @@
             gap: 1rem;
         }
 
+        .project-metrics {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding: 0;
+        }
+
+        .project-metrics li {
+            padding: 0.5rem 0;
+            color: var(--electric);
+            font-size: 0.95rem;
+        }
+
+        .project-metrics li::before {
+            content: "✓ ";
+            margin-right: 0.5rem;
+        }
+
+        .tag-success {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: rgba(76, 175, 80, 0.5);
+            color: #4CAF50;
+        }
+
+        .tag-warning {
+            background: rgba(255, 184, 0, 0.2);
+            border-color: rgba(255, 184, 0, 0.5);
+            color: var(--amber);
+        }
+
+        .tag-info {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.5);
+            color: var(--violet);
+        }
+
         /* Experience */
         .experience-section {
             padding: 6rem 3rem;
@@ -828,47 +863,7 @@
                     <p class="section-description">Recent implementations and solutions</p>
                 </div>
                 <div class="project-grid">
-                    <div class="project-card">
-                        <div class="project-image">📝</div>
-                        <div class="project-info">
-                            <h3 class="display">Project Title Placeholder</h3>
-                            <div class="project-tags">
-                                <span class="tag">ITSM</span>
-                                <span class="tag">Employee Center</span>
-                                <span class="tag">App Engine</span>
-                            </div>
-                            <p class="project-description">Project description goes here. Explain the challenge, your approach, the technologies used, and the outcomes achieved. Include metrics and business impact where possible.</p>
-                            <a href="#" class="project-link">View Details →</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">📝</div>
-                        <div class="project-info">
-                            <h3 class="display">Project Title Placeholder</h3>
-                            <div class="project-tags">
-                                <span class="tag">ITSM</span>
-                                <span class="tag">Employee Center</span>
-                                <span class="tag">App Engine</span>
-                            </div>
-                            <p class="project-description">Project description goes here. Explain the challenge, your approach, the technologies used, and the outcomes achieved. Include metrics and business impact where possible.</p>
-                            <a href="#" class="project-link">View Details →</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">📝</div>
-                        <div class="project-info">
-                            <h3 class="display">Project Title Placeholder</h3>
-                            <div class="project-tags">
-                                <span class="tag">ITSM</span>
-                                <span class="tag">Employee Center</span>
-                                <span class="tag">App Engine</span>
-                            </div>
-                            <p class="project-description">Project description goes here. Explain the challenge, your approach, the technologies used, and the outcomes achieved. Include metrics and business impact where possible.</p>
-                            <a href="#" class="project-link">View Details →</a>
-                        </div>
-                    </div>
+                    <!-- Projects will be loaded dynamically from CMS -->
                 </div>
             </div>
         </section>
@@ -989,5 +984,7 @@
             });
         }
     </script>
+    <script src="js/markdown-loader.js"></script>
+    <script src="js/projects.js"></script>
 </body>
 </html>
