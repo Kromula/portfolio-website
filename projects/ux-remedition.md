@@ -1,33 +1,51 @@
 ---
-title: UX Remediation Project
+title: UX Remediation
 description: Portal remediation project to enhance an existing Employee Center.
-date: 2026-02-05T17:36:51.259Z
+date: 2026-02-05T12:00:00.000Z
 status: In Progress
-featured_image: /images/uploads/new-site.png
+featured_image: images/uploads/new-site.png
 tags:
   - employeecenter
-  - UX
-  - UI
+  - itsm
   - portal
 category: Employee Center
 featured: true
 order: 0
 ---
-## O﻿ld Portal
 
-![old portal](/images/uploads/old-esc.png "Old Portal")
+## Project Overview
 
-## N﻿ew Portal
+Customer had received negative feedback on their existing portal having conducted and internal review, and felt themselves the portal looked dated. After some initial discussions and workshops,  
+a review and analysis was performed to understand the current situation and where enhancements could be made.  
 
-![new portal](/images/uploads/new-site.png "new portal")
+## Challenge
+
+ - Existing Portal was built in Employee Center but using a Service Portal style layout.  
+ - Portal had significant UX issues with text and images.  
+ - Portal had significant widget alignment and CSS issues.  
+ - Taxonomy was large and cumbersome, with little connected content.  
+ - Landing page had significant partner widget customisations.  
 
 
+## Solution
 
-* Workshops to review current Employee Center and understand pain points.
-* Initial review and analysis of existing portal and taxonomy.
-* Analysis shared with customer, along with an initial suite of recommendations.
-* Utilized new left side navigation for Taxonomy.
-* Implemented gradient background using customers branding.
-* Enhanced widgets to go back to remove partner customized widgets. 
-* D﻿eployed new My Requests page.
-* U﻿pdated ticket page to modern layout.
+Analysis was performed on the portal and taxonomy. Issues with the existing portal were identified and remediation steps outlined.  
+An initial prototype was built, which was then refined throguh an iterative design approach.  
+Review was performed on existing taxonomy, and provided a report indicating the issues with the Taxonomy and a suggested new approach.  
+Customer then led internal workshops to draft a new Taxonomy design which was much simpler and resultd in an approved user experience.  
+
+## Key Features
+
+- Rdesigned modern layout. 
+- Implemented new ServiceNow features like updated My Requests, left side navigation and modern ticket layout.  
+- Removed REQ from portal in a configurable, not customised, method.  
+- Introduced notifications to portal.
+
+
+## Screenshots
+
+![Before](images/uploads/old-esc.png "Before implementation")
+
+![After](images/uploads/new-site.png "After implementation")
+
+## Results
