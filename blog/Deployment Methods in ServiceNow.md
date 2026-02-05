@@ -3,7 +3,6 @@ title: Deployment methods in ServiceNow
 date: 2026-02-05T12:00:00.000Z
 author: Daniel O'Connor
 description: Blog post on deployment methods
-featured_image: /images/uploads/your-image.png
 tags:
   - servicenow
   - devops
