@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Blog Post - Daniel O'Connor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Cabinet+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .post-header {
+            padding: 8rem 3rem 3rem;
+            background: var(--slate);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .post-header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            flex-wrap: wrap;
+        }
+
+        .post-category {
+            color: var(--electric);
+            font-weight: 600;
+        }
+
+        .post-header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .post-description {
+            font-size: 1.3rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .post-featured-image {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .post-featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .post-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 3rem 0;
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--electric);
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--violet);
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            color: var(--gray);
+        }
+
+        .post-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .post-content code {
+            background: var(--slate);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--electric);
+        }
+
+        .post-content pre {
+            background: var(--slate);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .post-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--white);
+        }
+
+        .post-content blockquote {
+            border-left: 4px solid var(--electric);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--gray);
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 3rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .post-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--electric);
+        }
+
+        .post-author {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--slate);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .author-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .author-bio {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .comments-section {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 3rem 3rem;
+        }
+
+        .comments-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--electric);
+        }
+
+        .back-link {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 0 3rem;
+        }
+
+        .back-link a {
+            color: var(--electric);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .back-link a:hover {
+            gap: 1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray);
+        }
+
+        .loading h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .post-header {
+                padding: 5rem 1.5rem 2rem;
+            }
+
+            .post-content {
+                padding: 2rem 1.5rem 0;
+            }
+
+            .post-author {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .comments-section, .back-link {
+                padding: 0 1.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <header>
+        <nav>
+            <div class="logo display"><a href="index.html">Daniel O'Connor</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html#servicenow">Expertise</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="how-to.html">How-To</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="back-link">
+            <a href="blog.html">← Back to Blog</a>
+        </div>
+
+        <div id="post-container">
+            <div class="loading">
+                <h2>Loading...</h2>
+                <p>Please wait while we fetch the content.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="display">&copy; 2026 Daniel O'Connor • ServiceNow Senior Technical Consultant</p>
+    </footer>
+
+    <script src="js/markdown-loader.js"></script>
+    <script>
+        // Get slug from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const slug = urlParams.get('slug');
+        const type = urlParams.get('type') || 'blog'; // blog or how-to
+
+        if (!slug) {
+            document.getElementById('post-container').innerHTML = `
+                <div class="loading">
+                    <h2>Post not found</h2>
+                    <p><a href="blog.html">Return to blog</a></p>
+                </div>
+            `;
+        } else {
+            loadPost(slug, type);
+        }
+
+        async function loadPost(slug, type) {
+            try {
+                const loader = new MarkdownLoader('Kromula/portfolio-website', 'master');
+                const directory = type === 'how-to' ? 'how-to' : 'blog';
+                const url = `https://raw.githubusercontent.com/Kromula/portfolio-website/master/${directory}/${slug}.md`;
+
+                const post = await loader.fetchAndParse(url);
+
+                if (!post) {
+                    throw new Error('Post not found');
+                }
+
+                // Update page title
+                document.getElementById('page-title').textContent = `${post.title} - Daniel O'Connor`;
+
+                // Update back link
+                if (type === 'how-to') {
+                    document.querySelector('.back-link a').href = 'how-to.html';
+                    document.querySelector('.back-link a').textContent = '← Back to How-To Guides';
+                }
+
+                // Convert markdown to HTML
+                const contentHtml = marked.parse(post.body);
+
+                // Format date
+                const date = new Date(post.date);
+                const formattedDate = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                // Build HTML
+                let html = `
+                    <article>
+                        <header class="post-header">
+                            <div class="post-header-content">
+                                <div class="post-meta">
+                                    <span class="post-category">${post.category || 'Uncategorized'}</span>
+                                    <span>•</span>
+                                    <span>${formattedDate}</span>
+                                    <span>•</span>
+                                    <span>${loader.calculateReadTime(post.body)}</span>
+                                </div>
+                                <h1 class="display">${post.title}</h1>
+                                ${post.description ? `<p class="post-description">${post.description}</p>` : ''}
+                            </div>
+                        </header>
+
+                        ${post.featured_image ? `
+                            <div class="post-featured-image">
+                                <img src="${post.featured_image}" alt="${post.title}">
+                            </div>
+                        ` : ''}
+
+                        <div class="post-content">
+                            ${contentHtml}
+                        </div>
+
+                        ${post.tags && post.tags.length > 0 ? `
+                            <div class="post-tags">
+                                ${post.tags.map(tag => `<span class="post-tag">${tag}</span>`).join('')}
+                            </div>
+                        ` : ''}
+
+                        <div class="post-author">
+                            <div class="author-avatar">DO</div>
+                            <div class="author-info">
+                                <h3>${post.author || 'Daniel O\'Connor'}</h3>
+                                <p class="author-bio">ServiceNow Senior Technical Consultant specializing in ITSM, Employee Center, and App Engine. 10+ years of platform experience.</p>
+                            </div>
+                        </div>
+
+                        <div class="comments-section">
+                            <h2>Comments</h2>
+                            <script src="https://giscus.app/client.js"
+                                    data-repo="Kromula/portfolio-website"
+                                    data-repo-id="[REPLACE_WITH_YOUR_REPO_ID]"
+                                    data-category="Comments"
+                                    data-category-id="[REPLACE_WITH_YOUR_CATEGORY_ID]"
+                                    data-mapping="pathname"
+                                    data-strict="0"
+                                    data-reactions-enabled="1"
+                                    data-emit-metadata="0"
+                                    data-input-position="top"
+                                    data-theme="dark"
+                                    data-lang="en"
+                                    data-loading="lazy"
+                                    crossorigin="anonymous"
+                                    async>
+                            <\/script>
+                        </div>
+                    </article>
+                `;
+
+                document.getElementById('post-container').innerHTML = html;
+
+            } catch (error) {
+                console.error('Error loading post:', error);
+                document.getElementById('post-container').innerHTML = `
+                    <div class="loading">
+                        <h2>Error loading post</h2>
+                        <p>The post could not be found. <a href="${type === 'how-to' ? 'how-to.html' : 'blog.html'}">Go back</a></p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

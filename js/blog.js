@@ -27,7 +27,8 @@ async function loadBlogPosts() {
         allPosts = posts.map(post => ({
             ...post,
             icon: getCategoryIcon(post.category),
-            readTime: loader.calculateReadTime(post.body)
+            readTime: loader.calculateReadTime(post.body),
+            url: `post.html?slug=${post.slug}&type=blog`
         }));
 
         displayPosts(allPosts);
