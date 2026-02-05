@@ -4,6 +4,7 @@ backend:
   branch: master
   base_url: https://api.netlify.com
   auth_endpoint: auth
+  site_id: 3d6de414-3536-495c-9d0b-828da92eba86
 
 # Optional: Use this for local development
 # local_backend: true

@@ -6,7 +6,8 @@
       "Bash(git commit:*)",
       "Bash(gh repo create:*)",
       "Bash(git push:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(gh run list:*)"
     ]
   }
 }
