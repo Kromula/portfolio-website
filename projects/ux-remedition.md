@@ -1,6 +1,6 @@
 ---
 title: UX Remediation Project
-description: Portal remediation project to enhance an existing Employee Center
+description: Portal remediation project to enhance an existing Employee Center.
 date: 2026-02-05T17:36:51.259Z
 status: In Progress
 featured_image: /images/uploads/new-site.png
