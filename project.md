@@ -10,13 +10,11 @@
 - [ ] Add analytics tracking
 - [ ] SEO optimization
 - [ ] Optimize for performance
-- [ ] Update Giscus repo/category IDs in post.html for comments
 - [ ] Add custom domain (optional)
 
 ### In Progress
-- [ ] Create more projects using GitHub templates
-- [ ] Write blog posts
-- [ ] Write how-to guides
+- [ ] Troubleshoot Giscus comments (widget not displaying)
+- [ ] Create more content using templates
 
 ### Completed
 - [x] Project initialization
@@ -59,12 +57,38 @@
   - Added project status badges (Completed/In Progress/Planned)
   - Added metrics/achievements display for projects
   - Responsive image sizing with hover effects
+- [x] Content creation workflow established:
+  - Created first blog post: "Deployment Methods in ServiceNow"
+  - Created first how-to guide: "Create your own gradient background"
+  - Updated UX Remediation project with detailed content
+  - Organized images folder structure (images/howto/ with subfolders)
+  - Removed test/placeholder content files
+- [x] Giscus comments configuration:
+  - Updated post.html with repo and category IDs
+  - Installed Giscus app on repository
+  - Enabled GitHub Discussions
+  - Script configured (troubleshooting display issue)
 
 ## Bugs
 None reported yet.
 
 ## Issues
-None reported yet.
+
+### Giscus Comments Not Displaying
+**Status:** Troubleshooting
+**Description:** Giscus comment widget not appearing on blog/how-to/project pages despite:
+- Script tag present in HTML with correct repo/category IDs
+- Giscus app installed on repository
+- GitHub Discussions enabled
+- Repository is public
+
+**Error:** Console shows "giscus is not installed on this repository" and `repo=undefined` in API calls
+
+**Next Steps:**
+- Wait for GitHub permissions to sync (can take several hours)
+- Try different browser/device
+- Verify Giscus app configuration
+- Consider alternative: Utterances or other comment systems
 
 ## Notes
 - Modern Geometric design selected and customized
