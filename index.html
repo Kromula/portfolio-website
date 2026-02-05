@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Design Options</title>
+    <title>Daniel O'Connor - ServiceNow Senior Technical Consultant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Cabinet+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --midnight: #0F0F23;
+            --slate: #1A1A2E;
+            --electric: #00F0FF;
+            --violet: #8B5CF6;
+            --amber: #FFB800;
+            --white: #FFFFFF;
+            --gray: #A0A0B0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,196 +25,959 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f5f5f5;
-            padding: 3rem 2rem;
+            font-family: 'Cabinet Grotesk', sans-serif;
+            background: var(--midnight);
+            color: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
+        .display {
+            font-family: 'Clash Display', sans-serif;
+        }
+
+        /* Geometric grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Floating geometric shapes */
+        .geometric-shape {
+            position: fixed;
+            z-index: 0;
+            opacity: 0.1;
+            animation: rotate 30s linear infinite;
+        }
+
+        .shape-1 {
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--electric);
+            transform: rotate(45deg);
+        }
+
+        .shape-2 {
+            bottom: 20%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            border: 2px solid var(--violet);
+            border-radius: 50%;
+        }
+
+        .shape-3 {
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 173px solid rgba(255, 184, 0, 0.1);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric), var(--violet));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--electric);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 3rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--electric);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--electric);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--electric), var(--violet), var(--amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 1.3rem 3rem;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            color: var(--midnight);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--violet), var(--amber));
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--electric);
+            border: 2px solid var(--electric);
+        }
+
+        .cta-secondary:hover {
+            background: var(--electric);
+            color: var(--midnight);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            max-width: 1400px;
+            margin: 0 auto 6rem;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--slate);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--electric);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ServiceNow Section */
+        .servicenow-section {
+            padding: 6rem 3rem;
+            background: linear-gradient(180deg, var(--midnight), var(--slate));
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .servicenow-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            color: var(--electric);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--slate);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--electric), var(--violet));
+            transition: height 0.4s;
+        }
+
+        .expertise-card:hover::before {
+            height: 100%;
+        }
+
+        .expertise-card:hover {
+            border-color: var(--electric);
+            transform: translateX(5px);
+        }
+
+        .expertise-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgba(0, 240, 255, 0.1);
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            line-height: 1;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--electric);
+            font-weight: 700;
+        }
+
+        .expertise-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Projects */
+        .projects-section {
+            padding: 6rem 3rem;
+        }
+
+        .projects-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--slate);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.4s;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            min-height: 300px;
+        }
+
+        .project-card:hover {
+            border-color: var(--electric);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.1);
+        }
+
+        .project-image {
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 0, 0, 0.3));
+        }
+
+        .project-info {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--electric);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-description {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--electric);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        /* Experience */
+        .experience-section {
+            padding: 6rem 3rem;
+            background: var(--slate);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .experience-content {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #333;
+        .timeline {
+            margin-top: 3rem;
         }
 
-        .intro {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 3rem;
-            max-width: 800px;
-        }
-
-        .designs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .design-card {
-            background: white;
+        .timeline-item {
+            padding: 2.5rem;
+            background: var(--midnight);
+            border-left: 4px solid var(--electric);
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
             transition: all 0.3s;
         }
 
-        .design-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        .timeline-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--violet);
         }
 
-        .design-preview {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .timeline-header {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .design-card:nth-child(1) .design-preview {
-            background: linear-gradient(135deg, #B4C7B8 0%, #6B8E77 100%);
-            color: #FFF8F0;
-        }
-
-        .design-card:nth-child(2) .design-preview {
-            background: linear-gradient(135deg, #00F0FF 0%, #8B5CF6 100%);
-            color: #0F0F23;
-        }
-
-        .design-info {
-            padding: 1.5rem;
-        }
-
-        .design-info h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .design-info p {
-            color: #666;
+            justify-content: space-between;
+            align-items: start;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
+            gap: 2rem;
         }
 
-        .design-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .design-features li {
-            padding: 0.3rem 0;
-            color: #777;
+        .timeline-date {
             font-size: 0.9rem;
+            color: var(--electric);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
         }
 
-        .design-features li::before {
-            content: "✓ ";
-            color: #4CAF50;
-            font-weight: bold;
-            margin-right: 0.5rem;
+        .timeline-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
-        .view-button {
-            display: block;
-            width: 100%;
-            padding: 0.9rem;
-            background: #333;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 6px;
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--violet);
+            margin-bottom: 1rem;
             font-weight: 600;
+        }
+
+        .timeline-description {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skills-section {
+            padding: 6rem 3rem;
+        }
+
+        .skills-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-box {
+            background: var(--slate);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
             transition: all 0.3s;
         }
 
-        .view-button:hover {
-            background: #555;
+        .skill-box:hover {
+            border-color: var(--electric);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.1);
         }
 
-        .notes {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .notes h2 {
+        .skill-box h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
+            margin-bottom: 1.5rem;
+            color: var(--electric);
+            font-weight: 700;
         }
 
-        .notes ul {
-            margin-left: 1.5rem;
-            color: #666;
+        .skill-box ul {
+            list-style: none;
         }
 
-        .notes li {
-            margin-bottom: 0.5rem;
+        .skill-box li {
+            padding: 0.7rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .skill-box li:hover {
+            color: var(--white);
+            padding-left: 1rem;
+        }
+
+        .skill-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact */
+        .contact-section {
+            padding: 8rem 3rem;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .contact-content h2 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--midnight);
+        }
+
+        .contact-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: var(--midnight);
+            opacity: 0.8;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            padding: 1.3rem 3rem;
+            background: var(--midnight);
+            color: var(--electric);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 2px solid var(--midnight);
+        }
+
+        .contact-link:hover {
+            background: transparent;
+            color: var(--midnight);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: var(--midnight);
+            padding: 2rem 3rem;
+            text-align: center;
+            color: var(--gray);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                min-height: 200px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header, .hero, .servicenow-section, .projects-section,
+            .experience-section, .skills-section, .contact-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Portfolio Design Options</h1>
-        <p class="intro">
-            Below are 2 design options for your ServiceNow developer portfolio.
-            Each design has a unique aesthetic and personality. Click "View Design" to preview each one in full,
-            then let me know which one you'd like to customize with your personal information.
-        </p>
+    <div class="grid-bg"></div>
+    <div class="geometric-shape shape-1"></div>
+    <div class="geometric-shape shape-2"></div>
+    <div class="geometric-shape shape-3"></div>
 
-        <div class="designs-grid">
-            <div class="design-card">
-                <div class="design-preview">🌿</div>
-                <div class="design-info">
-                    <h2>Design 1: Organic & Soft</h2>
-                    <p>Natural, warm, and approachable with soft shapes.</p>
-                    <ul class="design-features">
-                        <li>Cream and sage green color palette</li>
-                        <li>Rounded corners and soft shadows</li>
-                        <li>Gentle animations with floating shapes</li>
-                        <li>Welcoming and human-centered</li>
-                    </ul>
-                    <a href="design-4-organic-soft.html" class="view-button">View Design</a>
-                </div>
-            </div>
-
-            <div class="design-card">
-                <div class="design-preview">🔷</div>
-                <div class="design-info">
-                    <h2>Design 2: Modern Geometric</h2>
-                    <p>Sharp, contemporary design with geometric precision.</p>
-                    <ul class="design-features">
-                        <li>Dark theme with electric blue/violet gradients</li>
-                        <li>Clash Display geometric font</li>
-                        <li>Grid backgrounds and sharp edges</li>
-                        <li>Professional and tech-forward</li>
-                    </ul>
-                    <a href="design-5-modern-geometric.html" class="view-button">View Design</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="notes">
-            <h2>Next Steps</h2>
-            <ul>
-                <li>Open each design to see the full experience</li>
-                <li>Consider which aesthetic best represents your professional brand</li>
-                <li>Let me know which design you prefer (or if you'd like a hybrid approach)</li>
-                <li>I'll customize the chosen design with your actual information</li>
-                <li>All designs are fully responsive and production-ready</li>
+    <header>
+        <nav>
+            <div class="logo display">Daniel O'Connor</div>
+            <ul class="nav-links">
+                <li><a href="#servicenow">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
-    </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">SERVICENOW SENIOR TECHNICAL CONSULTANT</div>
+                <h1 class="display">Build. <span class="gradient-text">Implement.</span><br>Transform.</h1>
+                <p class="hero-description">Helping customers maximize ServiceNow through consultancy, leading practices and implementations. Specializing in ITSM, Employee Center, and App Engine with 10 years of platform experience.</p>
+                <div class="cta-group">
+                    <a href="#projects" class="cta-button display">View Work</a>
+                    <a href="#contact" class="cta-button cta-secondary display">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number display">10+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number display">5+</div>
+                <div class="stat-label">Certifications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number display">ITSM</div>
+                <div class="stat-label">Specialist</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number display">App Engine</div>
+                <div class="stat-label">Expert</div>
+            </div>
+        </section>
+
+        <section class="servicenow-section" id="servicenow">
+            <div class="servicenow-content">
+                <div class="section-header">
+                    <div class="section-label">CORE CAPABILITIES</div>
+                    <h2 class="section-title display">ServiceNow Expertise</h2>
+                    <p class="section-description">10 years of platform experience delivering leading practices and implementations across ITSM, Employee Center, and App Engine</p>
+                </div>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-number display">01</div>
+                        <h3 class="display">ITSM Solutions</h3>
+                        <p>Expert in IT Service Management implementations, incident and problem management, change control, and service catalog design. Delivering ITIL-aligned solutions that improve service delivery.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number display">02</div>
+                        <h3 class="display">Employee Center</h3>
+                        <p>Certified in Employee Center design and implementation. Creating modern, intuitive employee experiences with portal development, workspace configuration, and employee journey optimization.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number display">03</div>
+                        <h3 class="display">App Engine</h3>
+                        <p>Custom application development using App Engine Studio. Building scalable, low-code solutions that extend platform capabilities while maintaining upgrade-safe practices.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number display">04</div>
+                        <h3 class="display">CMDB & Discovery</h3>
+                        <p>Certified in CMDB implementation and management. Architecting configuration management strategies, discovery automation, and maintaining accurate asset relationships.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="projects-content">
+                <div class="section-header">
+                    <div class="section-label">PORTFOLIO</div>
+                    <h2 class="section-title display">Current Projects</h2>
+                    <p class="section-description">Recent implementations and solutions</p>
+                </div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image">📝</div>
+                        <div class="project-info">
+                            <h3 class="display">Project Title Placeholder</h3>
+                            <div class="project-tags">
+                                <span class="tag">ITSM</span>
+                                <span class="tag">Employee Center</span>
+                                <span class="tag">App Engine</span>
+                            </div>
+                            <p class="project-description">Project description goes here. Explain the challenge, your approach, the technologies used, and the outcomes achieved. Include metrics and business impact where possible.</p>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">📝</div>
+                        <div class="project-info">
+                            <h3 class="display">Project Title Placeholder</h3>
+                            <div class="project-tags">
+                                <span class="tag">ITSM</span>
+                                <span class="tag">Employee Center</span>
+                                <span class="tag">App Engine</span>
+                            </div>
+                            <p class="project-description">Project description goes here. Explain the challenge, your approach, the technologies used, and the outcomes achieved. Include metrics and business impact where possible.</p>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">📝</div>
+                        <div class="project-info">
+                            <h3 class="display">Project Title Placeholder</h3>
+                            <div class="project-tags">
+                                <span class="tag">ITSM</span>
+                                <span class="tag">Employee Center</span>
+                                <span class="tag">App Engine</span>
+                            </div>
+                            <p class="project-description">Project description goes here. Explain the challenge, your approach, the technologies used, and the outcomes achieved. Include metrics and business impact where possible.</p>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-section" id="experience">
+            <div class="experience-content">
+                <div class="section-header">
+                    <div class="section-label">ABOUT</div>
+                    <h2 class="section-title display">Professional Background</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="display">ServiceNow Senior Technical Consultant</h3>
+                                <div class="timeline-company">ServiceNow</div>
+                            </div>
+                            <div class="timeline-date">Present</div>
+                        </div>
+                        <p class="timeline-description">Helping customers maximize ServiceNow through consultancy, leading practices and implementations. Specializing in ITSM, Employee Center, and App Engine with a focus on delivering exceptional customer outcomes and platform adoption.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="display">10 Years of ServiceNow Experience</h3>
+                                <div class="timeline-company">Platform Expertise</div>
+                            </div>
+                            <div class="timeline-date">2015 - Present</div>
+                        </div>
+                        <p class="timeline-description">A decade of hands-on experience with the ServiceNow platform, spanning ITSM implementations, portal development, CMDB architecture, and custom application development. Committed to continuous learning and staying current with platform innovations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <div class="skills-content">
+                <div class="section-header">
+                    <div class="section-label">TECHNICAL STACK</div>
+                    <h2 class="section-title display">Skills & Certifications</h2>
+                    <p class="section-description">View my complete <a href="https://learning.servicenow.com/lxp?id=nl_public&user=danielocon4bcbd7" target="_blank" style="color: var(--electric); text-decoration: none; border-bottom: 1px solid var(--electric);">ServiceNow Resume</a> for full credentials and achievements</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <h3 class="display">ServiceNow Modules</h3>
+                        <ul>
+                            <li>IT Service Management (ITSM)</li>
+                            <li>Employee Center</li>
+                            <li>App Engine Studio</li>
+                            <li>CMDB & Discovery</li>
+                            <li>Service Portal</li>
+                            <li>Flow Designer</li>
+                        </ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="display">Development</h3>
+                        <ul>
+                            <li>JavaScript / GlideScript</li>
+                            <li>GlideAPI / Glide Query</li>
+                            <li>UI Builder</li>
+                            <li>HTML / CSS</li>
+                            <li>REST / SOAP APIs</li>
+                            <li>Business Rules & Scripts</li>
+                        </ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="display">Tools & Methodologies</h3>
+                        <ul>
+                            <li>Git / GitHub</li>
+                            <li>VS Code</li>
+                            <li>Agile / Scrum</li>
+                            <li>ITIL Framework</li>
+                            <li>Update Sets</li>
+                            <li>Instance Management</li>
+                        </ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="display">Certifications</h3>
+                        <ul>
+                            <li>CSA - Certified System Administrator</li>
+                            <li>CIS - IT Service Management</li>
+                            <li>CIS - Configuration Management</li>
+                            <li>Portal Development</li>
+                            <li>Employee Center Specialist</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="contact-content">
+                <h2 class="display">Let's Connect</h2>
+                <p>Open to collaboration and ServiceNow discussions</p>
+                <div class="contact-links">
+                    <a href="mailto:daniel.oconnor@servicenow.com" class="contact-link display">Email</a>
+                    <a href="https://www.linkedin.com/in/doc1988/" target="_blank" class="contact-link display">LinkedIn</a>
+                    <a href="https://github.com/Kromula" target="_blank" class="contact-link display">GitHub</a>
+                    <a href="https://learning.servicenow.com/lxp?id=nl_public&user=danielocon4bcbd7" target="_blank" class="contact-link display">ServiceNow Resume</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="display">&copy; 2026 Daniel O'Connor • ServiceNow Senior Technical Consultant</p>
+    </footer>
 </body>
 </html>
