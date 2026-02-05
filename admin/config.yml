@@ -9,9 +9,6 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-# Publish mode
-publish_mode: editorial_workflow
-
 collections:
   # Blog Posts Collection
   - name: "blog"
