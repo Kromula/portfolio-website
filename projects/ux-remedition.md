@@ -1,5 +1,5 @@
 ---
-title: UX Remedition
+title: UX Remediation Project
 description: >-
   For this project, customer had identified their initial Employee Centre was
   receiving poor feedback from users and needed an upgrade. 
