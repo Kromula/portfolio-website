@@ -116,4 +116,6 @@ Finally, go back to the ec_standard_home page and change the sys_id for $backgro
 
 ## Conclusion
 
-When next loading your Employee Center, you will now see your new background gradient image in effect. 
+When next loading your Employee Center, you will now see your new background gradient image in effect.  
+
+![Screenshot](images/howto/custombackground/custombackground.png)
