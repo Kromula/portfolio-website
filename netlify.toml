@@ -1,0 +1,17 @@
+[build]
+  publish = "."
+  command = "echo 'No build needed - static files only'"
+
+# Redirect /admin to serve the CMS
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
+  force = false
+
+# Redirect everything else to GitHub Pages
+[[redirects]]
+  from = "/*"
+  to = "https://kromula.github.io/portfolio-website/:splat"
+  status = 301
+  force = false
