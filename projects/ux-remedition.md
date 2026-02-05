@@ -6,6 +6,21 @@ description: >-
 
 
   Upon meeting the customer we performed a number of workshops and an analysis on the existing Employee Center and Taxonomy, identifying areas for improvement with UX, navigation, performance and maintainability throughout future upgrades. 
+
+
+  Customer portal was redesigned with : 
+
+  - New Branding
+
+  - Using the new left side navigation
+
+  - CSS adjustments to enhance portal look and feel
+
+  - Redesigned Taxonomy for an easier and better user journey
+
+  - Updated pages for a better experience for users reviewing their requests
+
+  - Removal of partner based custom widgets and customization to improve upgradeability
 date: 2026-02-05T17:36:51.259Z
 status: In Progress
 featured_image: /images/uploads/new-site.png
@@ -18,6 +33,16 @@ category: Employee Center
 featured: true
 order: 0
 ---
+## O﻿ld Portal
+
+![old portal](/images/uploads/old-esc.png "Old Portal")
+
+## N﻿ew Portal
+
+![new portal](/images/uploads/new-site.png "new portal")
+
+
+
 * Workshops to review current Employee Center and understand pain points.
 * Initial review and analysis of existing portal and taxonomy.
 * Analysis shared with customer, along with an initial suite of recommendations.
