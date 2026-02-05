@@ -26,11 +26,9 @@
 - [x] Documentation setup (claude.md, project.md)
 - [x] Git repository initialization
 - [x] GitHub repository created (https://github.com/Kromula/portfolio-website)
-- [x] Created 4 unique design layout options:
-  - Design 1: Minimal Editorial (refined, magazine-inspired)
-  - Design 2: Dark Neon Tech (futuristic, cyber aesthetic)
-  - Design 3: Organic & Soft (warm, approachable)
-  - Design 4: Modern Geometric (sharp, contemporary)
+- [x] Created 2 final design layout options:
+  - Design 1: Organic & Soft (warm, approachable)
+  - Design 2: Modern Geometric (sharp, contemporary)
 
 ## Bugs
 None reported yet.
@@ -45,11 +43,14 @@ None reported yet.
 - index.html provides overview and preview of all designs
 - Next step: User selects preferred design for customization
 
-## Design Options Summary
-1. **Minimal Editorial** - Sophisticated, warm neutrals, serif typography
-2. **Dark Neon Tech** - Futuristic, cyan/pink neon, dark theme
-3. **Organic & Soft** - Natural, cream/sage, rounded shapes
-4. **Modern Geometric** - Contemporary, electric blue/violet, sharp edges
+## Final Design Options
+1. **Organic & Soft** - Natural, cream/sage, rounded shapes, warm and approachable
+2. **Modern Geometric** - Contemporary, electric blue/violet, sharp edges, tech-forward
+
+Removed designs:
+- Minimal Editorial (too minimal)
+- Dark Neon Tech (great design but not right fit for this project)
+- Brutalist Bold (too bold)
 
 ---
 Last Updated: 2026-02-05
