@@ -6,17 +6,14 @@
 ## Enhancements
 
 ### Planned
-- [ ] Implement chosen design
-- [ ] Add projects showcase section
-- [ ] Add experience/timeline section
-- [ ] Add tools and skills section
-- [ ] Add ServiceNow projects section
-- [ ] Add contact form/information
-- [ ] Implement responsive design
-- [ ] Add animations and transitions
-- [ ] Optimize for performance
-- [ ] SEO optimization
+- [ ] **Blog Section** - Articles, insights, and technical posts
+- [ ] **How-To Section** - Tutorials and guides for ServiceNow
+- [ ] Implement CMS for content management
+- [ ] Add dedicated Projects page (separate from homepage)
 - [ ] Add analytics tracking
+- [ ] SEO optimization
+- [ ] Optimize for performance
+- [ ] Deploy to hosting platform
 
 ### In Progress
 - [ ] Fill in actual project details
@@ -44,11 +41,24 @@ None reported yet.
 None reported yet.
 
 ## Notes
-- 5 complete design layouts created with distinct aesthetics
+- Modern Geometric design selected and customized
 - All designs are production-ready with responsive layouts
-- Each design includes: Hero, ServiceNow expertise, Projects, Experience timeline, Skills, Contact
-- index.html provides overview and preview of all designs
-- Next step: User selects preferred design for customization
+- Main site (index.html) includes: Hero, ServiceNow expertise, Projects, Experience, Skills, Contact
+- Need to implement CMS solution for blog and how-to content
+- Projects section currently has placeholders for current projects
+
+## Content Strategy
+### Blog
+- ServiceNow tips and tricks
+- Platform updates and insights
+- Implementation stories
+- Best practices and patterns
+
+### How-To Guides
+- Step-by-step ServiceNow tutorials
+- Configuration guides
+- Problem-solving walkthroughs
+- Integration examples
 
 ## Final Design Options
 1. **Organic & Soft** - Natural, cream/sage, rounded shapes, warm and approachable
