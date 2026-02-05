@@ -45,7 +45,9 @@ class MarkdownLoader {
     // Fetch and parse a single markdown file
     async fetchAndParse(url) {
         try {
-            const response = await fetch(url);
+            // Add cache-busting parameter to force fresh content
+            const cacheBuster = `?_=${Date.now()}`;
+            const response = await fetch(url + cacheBuster);
             if (!response.ok) return null;
 
             const content = await response.text();
