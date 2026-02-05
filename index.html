@@ -769,8 +769,6 @@
             }
         }
     </style>
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <div class="grid-bg"></div>
@@ -973,17 +971,6 @@
         <p class="display">&copy; 2026 Daniel O'Connor • ServiceNow Senior Technical Consultant</p>
     </footer>
 
-    <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
     <script src="js/markdown-loader.js"></script>
     <script src="js/projects.js"></script>
 </body>

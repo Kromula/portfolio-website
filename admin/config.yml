@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Kromula/portfolio-website
   branch: master
 
 # Optional: Use this for local development
