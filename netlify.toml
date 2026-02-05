@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+  command = "echo 'No build command needed for static site'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Enable Identity service for authentication
+[context.production.environment]
+  NETLIFY_USE_YARN = "false"

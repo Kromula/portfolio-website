@@ -1,0 +1,50 @@
+backend:
+  name: git-gateway
+  branch: master
+
+# Optional: Use this for local development
+# local_backend: true
+
+# Media files will be stored in the repo under static/images/uploads
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Publish mode
+publish_mode: editorial_workflow
+
+collections:
+  # Blog Posts Collection
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "Daniel O'Connor"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Category", name: "category", widget: "select", options: ["ServiceNow", "ITSM", "Employee Center", "App Engine", "CMDB", "Best Practices", "Technical", "Opinion"]}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+
+  # How-To Guides Collection
+  - name: "howto"
+    label: "How-To Guides"
+    folder: "how-to"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", default: "Daniel O'Connor"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Difficulty", name: "difficulty", widget: "select", options: ["Beginner", "Intermediate", "Advanced"]}
+      - {label: "Estimated Time", name: "time", widget: "string", required: false}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Category", name: "category", widget: "select", options: ["ITSM", "Employee Center", "App Engine", "CMDB", "Portal", "Integration", "Workflow", "Automation"]}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}

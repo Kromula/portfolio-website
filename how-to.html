@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How-To Guides - Daniel O'Connor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Cabinet+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .howto-hero {
+            padding: 8rem 3rem 4rem;
+            background: var(--slate);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .howto-hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .howto-hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--violet), var(--amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .howto-hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+        }
+
+        .howto-filters {
+            padding: 2rem 3rem;
+            background: var(--midnight);
+        }
+
+        .howto-filters-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--slate);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            font-family: 'Cabinet Grotesk', sans-serif;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--violet);
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            padding: 0.6rem 1.2rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 6px;
+            color: var(--violet);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--violet);
+            color: var(--white);
+            border-color: var(--violet);
+        }
+
+        .howto-grid {
+            padding: 4rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-card {
+            background: var(--slate);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--violet);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+        }
+
+        .guide-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--violet), var(--amber));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .guide-content {
+            padding: 2rem;
+        }
+
+        .guide-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .guide-difficulty {
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 184, 0, 0.2);
+            border: 1px solid rgba(255, 184, 0, 0.4);
+            border-radius: 4px;
+            color: var(--amber);
+            font-weight: 600;
+        }
+
+        .guide-time {
+            color: var(--gray);
+        }
+
+        .guide-category {
+            color: var(--violet);
+            font-weight: 600;
+        }
+
+        .guide-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .guide-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .guide-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .guide-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--violet);
+        }
+
+        .no-guides {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray);
+        }
+
+        .no-guides h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .howto-hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            .howto-filters {
+                padding: 1.5rem;
+            }
+
+            .howto-grid {
+                padding: 3rem 1.5rem;
+            }
+
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <header>
+        <nav>
+            <div class="logo display"><a href="index.html">Daniel O'Connor</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html#servicenow">Expertise</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="how-to.html" class="active">How-To</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="howto-hero">
+            <div class="howto-hero-content">
+                <h1 class="display">How-To Guides</h1>
+                <p>Step-by-step tutorials and practical guides for ServiceNow platform configurations and implementations.</p>
+            </div>
+        </section>
+
+        <section class="howto-filters">
+            <div class="howto-filters-content">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search guides...">
+                </div>
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-category="all">All</button>
+                    <button class="filter-tag" data-category="ITSM">ITSM</button>
+                    <button class="filter-tag" data-category="Employee Center">Employee Center</button>
+                    <button class="filter-tag" data-category="App Engine">App Engine</button>
+                    <button class="filter-tag" data-category="CMDB">CMDB</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="howto-grid">
+            <div id="guidesContainer" class="guides-grid">
+                <!-- Guides will be loaded here dynamically -->
+                <div class="no-guides">
+                    <h2>No guides yet</h2>
+                    <p>Check back soon for step-by-step tutorials and practical ServiceNow guides.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="display">&copy; 2026 Daniel O'Connor • ServiceNow Senior Technical Consultant</p>
+    </footer>
+
+    <script src="js/how-to.js"></script>
+</body>
+</html>

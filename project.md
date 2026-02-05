@@ -16,8 +16,12 @@
 - [ ] Deploy to hosting platform
 
 ### In Progress
-- [ ] Fill in actual project details
-- [ ] Discuss CSM integration for content management
+- [ ] Fill in actual project details on homepage
+- [ ] Deploy to Netlify
+- [ ] Set up Netlify Identity
+- [ ] Configure Giscus comments
+- [ ] Write first blog post
+- [ ] Write first how-to guide
 
 ### Completed
 - [x] Project initialization
@@ -33,6 +37,16 @@
   - Contact links (email, LinkedIn, GitHub, ServiceNow Resume)
   - Certifications: CSA, CIS-ITSM, CIS-CMDB, Portal, Employee Center
 - [x] Created placeholder project cards for current projects
+- [x] Built Netlify CMS integration:
+  - Created /admin interface for content management
+  - Configured collections for Blog and How-To
+  - Set up rich text editor with image uploads
+  - Added metadata fields (tags, categories, difficulty, etc.)
+- [x] Created blog.html and how-to.html listing pages
+- [x] Built post template with Giscus comments integration
+- [x] Added Blog and How-To to main navigation
+- [x] Created deployment documentation
+- [x] Set up project structure for static site + CMS
 
 ## Bugs
 None reported yet.
