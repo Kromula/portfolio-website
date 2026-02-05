@@ -1,10 +1,10 @@
 ---
-title: How to Create your own gradient backgrounf for Employee Center
+title: How to Create your own gradient background for Employee Center
 date: 2026-02-05T12:00:00.000Z
 author: Daniel O'Connor
 description: Step-by-step guide to setup a new background for ec_standard_home page
 difficulty: Intermediate
-featured_image: /images/uploads/your-image.png
+featured_image: images/howto/custombackground/custombackground.png
 tags:
   - tutorial
   - servicenow
