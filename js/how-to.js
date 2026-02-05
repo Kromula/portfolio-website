@@ -27,7 +27,6 @@ async function loadGuides() {
         allGuides = guides.map(guide => ({
             ...guide,
             icon: getCategoryIcon(guide.category),
-            readTime: loader.calculateReadTime(guide.time || guide.body),
             url: `post.html?slug=${guide.slug}&type=how-to`
         }));
 

@@ -27,7 +27,6 @@ async function loadBlogPosts() {
         allPosts = posts.map(post => ({
             ...post,
             icon: getCategoryIcon(post.category),
-            readTime: loader.calculateReadTime(post.body),
             url: `post.html?slug=${post.slug}&type=blog`
         }));
 
@@ -80,8 +79,6 @@ function displayPosts(posts) {
                     <span class="post-category">${post.category}</span>
                     <span>•</span>
                     <span>${post.date}</span>
-                    <span>•</span>
-                    <span>${post.readTime || '5 min read'}</span>
                 </div>
                 <h3>${post.title}</h3>
                 <p class="post-description">${post.description}</p>
