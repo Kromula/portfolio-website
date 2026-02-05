@@ -25,7 +25,7 @@ Employee Center standard utilises the ec_standard_home page, which by default co
 
 ![Screenshot](images/howto/custombackground/ootb.png)  
 
-Finding this background was be a little confusing. 
+Finding this background can be a little confusing. 
 
 Background images are stored on the actual page record, as attachments.
   
