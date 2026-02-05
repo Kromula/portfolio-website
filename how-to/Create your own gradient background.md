@@ -46,7 +46,8 @@ You will notice from the shipped out of the box background, these are .svg files
 
 This is the .svg code shipped with the out of the box gradient background 
 
-'''xml <svg width="1440" height="700" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+'''
+<svg width="1440" height="700" viewBox="0 0 1440 700" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 <g clip-path="url(#clip0_58_14388)">
 <mask id="mask0_58_14388" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="700">
 <path d="M1440 0H0V700H1440V0Z" fill="url(#paint0_linear_58_14388)"/>
@@ -95,7 +96,8 @@ This is the .svg code shipped with the out of the box gradient background
 <rect width="1440" height="700" fill="white"/>
 </clipPath>
 </defs>
-</svg> '''
+</svg>
+'''
 
 What you may notice from this code, is you can see Hexcode being defined at various points. This is where you can define your color scheme, for the gradient effect.
 
