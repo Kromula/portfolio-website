@@ -88,34 +88,78 @@ class MarkdownLoader {
         const lines = frontmatterText.split('\n');
         let currentKey = null;
         let currentArray = null;
+        let multilineValue = null;
+        let multilineMode = false;
 
-        lines.forEach(line => {
+        lines.forEach((line, index) => {
+            const trimmedLine = line.trim();
+
             // Handle arrays (tags, etc.)
-            if (line.trim().startsWith('-')) {
-                const value = line.trim().substring(1).trim();
-                if (currentArray) {
-                    currentArray.push(value);
-                }
+            if (trimmedLine.startsWith('-') && currentArray) {
+                const value = trimmedLine.substring(1).trim();
+                currentArray.push(value);
             }
             // Handle key-value pairs
-            else if (line.includes(':')) {
+            else if (line.includes(':') && !multilineMode) {
                 const colonIndex = line.indexOf(':');
                 const key = line.substring(0, colonIndex).trim();
                 const value = line.substring(colonIndex + 1).trim();
 
                 currentKey = key;
 
+                // Check if this starts a multiline string (>- or >)
+                if (value === '>-' || value === '>') {
+                    multilineMode = true;
+                    multilineValue = [];
+                    frontmatter[key] = '';
+                }
                 // Check if this starts an array
-                if (value === '') {
+                else if (value === '') {
                     currentArray = [];
                     frontmatter[key] = currentArray;
+                    multilineMode = false;
                 } else {
                     currentArray = null;
+                    multilineMode = false;
                     // Remove quotes if present
                     frontmatter[key] = value.replace(/^["']|["']$/g, '');
                 }
             }
+            // Handle multiline content
+            else if (multilineMode && line.startsWith('  ') && trimmedLine !== '') {
+                multilineValue.push(trimmedLine);
+            }
+            // End of multiline when we hit a new key or empty line at root level
+            else if (multilineMode && !line.startsWith('  ') && trimmedLine !== '') {
+                // Finish the multiline value
+                if (currentKey && multilineValue) {
+                    frontmatter[currentKey] = multilineValue.join(' ').trim();
+                }
+                multilineMode = false;
+                multilineValue = null;
+
+                // Process this line again as it might be a new key
+                if (line.includes(':')) {
+                    const colonIndex = line.indexOf(':');
+                    const key = line.substring(0, colonIndex).trim();
+                    const value = line.substring(colonIndex + 1).trim();
+                    currentKey = key;
+
+                    if (value === '') {
+                        currentArray = [];
+                        frontmatter[key] = currentArray;
+                    } else {
+                        currentArray = null;
+                        frontmatter[key] = value.replace(/^["']|["']$/g, '');
+                    }
+                }
+            }
         });
+
+        // Handle any remaining multiline value
+        if (multilineMode && currentKey && multilineValue) {
+            frontmatter[currentKey] = multilineValue.join(' ').trim();
+        }
 
         return frontmatter;
     }
