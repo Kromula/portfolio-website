@@ -99,7 +99,7 @@ This is the .svg code shipped with the out of the box gradient background
 
 What you may notice from this code, is you can see Hexcode being defined at various points. This is where you can define your color scheme, for the gradient effect.
 
-### :robot: AI Tip  
+### 🤖 AI Tip 
 You can add this code to your AI tool of choice, with your hexcodes and ask it to structure your version to save time!
 
 ## Step 3: Add your background image  
