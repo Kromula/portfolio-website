@@ -6,6 +6,7 @@
 ## Enhancements
 
 ### Planned
+- [ ] **View Counter** - Add view count tracking for articles, blog posts, and projects
 - [ ] Add dedicated Projects page (separate from homepage)
 - [ ] Add analytics tracking
 - [ ] SEO optimization
