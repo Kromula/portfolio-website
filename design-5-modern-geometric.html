@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 5: Modern Geometric</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&family=Cabinet+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight: #0F0F23;
+            --slate: #1A1A2E;
+            --electric: #00F0FF;
+            --violet: #8B5CF6;
+            --amber: #FFB800;
+            --white: #FFFFFF;
+            --gray: #A0A0B0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            background: var(--midnight);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .display {
+            font-family: 'Clash Display', sans-serif;
+        }
+
+        /* Geometric grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Floating geometric shapes */
+        .geometric-shape {
+            position: fixed;
+            z-index: 0;
+            opacity: 0.1;
+            animation: rotate 30s linear infinite;
+        }
+
+        .shape-1 {
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--electric);
+            transform: rotate(45deg);
+        }
+
+        .shape-2 {
+            bottom: 20%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+            border: 2px solid var(--violet);
+            border-radius: 50%;
+        }
+
+        .shape-3 {
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 173px solid rgba(255, 184, 0, 0.1);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric), var(--violet));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--electric);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 3rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--electric);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--electric);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--electric), var(--violet), var(--amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 1.3rem 3rem;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            color: var(--midnight);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--violet), var(--amber));
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--electric);
+            border: 2px solid var(--electric);
+        }
+
+        .cta-secondary:hover {
+            background: var(--electric);
+            color: var(--midnight);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            max-width: 1400px;
+            margin: 0 auto 6rem;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--slate);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--electric);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ServiceNow Section */
+        .servicenow-section {
+            padding: 6rem 3rem;
+            background: linear-gradient(180deg, var(--midnight), var(--slate));
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .servicenow-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            color: var(--electric);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--slate);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--electric), var(--violet));
+            transition: height 0.4s;
+        }
+
+        .expertise-card:hover::before {
+            height: 100%;
+        }
+
+        .expertise-card:hover {
+            border-color: var(--electric);
+            transform: translateX(5px);
+        }
+
+        .expertise-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgba(0, 240, 255, 0.1);
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            line-height: 1;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--electric);
+            font-weight: 700;
+        }
+
+        .expertise-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Projects */
+        .projects-section {
+            padding: 6rem 3rem;
+        }
+
+        .projects-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--slate);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.4s;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            min-height: 300px;
+        }
+
+        .project-card:hover {
+            border-color: var(--electric);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.1);
+        }
+
+        .project-image {
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 0, 0, 0.3));
+        }
+
+        .project-info {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--electric);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-description {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--electric);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        /* Experience */
+        .experience-section {
+            padding: 6rem 3rem;
+            background: var(--slate);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .experience-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            padding: 2.5rem;
+            background: var(--midnight);
+            border-left: 4px solid var(--electric);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--violet);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            gap: 2rem;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--electric);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--violet);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .timeline-description {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skills-section {
+            padding: 6rem 3rem;
+        }
+
+        .skills-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-box {
+            background: var(--slate);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-box:hover {
+            border-color: var(--electric);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.1);
+        }
+
+        .skill-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--electric);
+            font-weight: 700;
+        }
+
+        .skill-box ul {
+            list-style: none;
+        }
+
+        .skill-box li {
+            padding: 0.7rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .skill-box li:hover {
+            color: var(--white);
+            padding-left: 1rem;
+        }
+
+        .skill-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact */
+        .contact-section {
+            padding: 8rem 3rem;
+            background: linear-gradient(135deg, var(--electric), var(--violet));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .contact-content h2 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--midnight);
+        }
+
+        .contact-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: var(--midnight);
+            opacity: 0.8;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            padding: 1.3rem 3rem;
+            background: var(--midnight);
+            color: var(--electric);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 2px solid var(--midnight);
+        }
+
+        .contact-link:hover {
+            background: transparent;
+            color: var(--midnight);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: var(--midnight);
+            padding: 2rem 3rem;
+            text-align: center;
+            color: var(--gray);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                min-height: 200px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header, .hero, .servicenow-section, .projects-section,
+            .experience-section, .skills-section, .contact-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="geometric-shape shape-1"></div>
+    <div class="geometric-shape shape-2"></div>
+    <div class="geometric-shape shape-3"></div>
+
+    <header>
+        <nav>
+            <div class="logo display">YourName</div>
+            <ul class="nav-links">
+                <li><a href="#servicenow">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">SERVICENOW SPECIALIST</div>
+                <h1 class="display">Build. <span class="gradient-text">Automate.</span><br>Transform.</h1>
+                <p class="hero-description">Enterprise-grade ServiceNow solutions architected for scale. Transforming complex business processes into streamlined digital experiences through intelligent automation and seamless integration.</p>
+                <div class="cta-group">
+                    <a href="#projects" class="cta-button display">View Work</a>
+                    <a href="#contact" class="cta-button cta-secondary display">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number display">50K+</div>
+                <div class="stat-label">Users Served</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number display">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number display">15+</div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number display">40%</div>
+                <div class="stat-label">Efficiency Gain</div>
+            </div>
+        </section>
+
+        <section class="servicenow-section" id="servicenow">
+            <div class="servicenow-content">
+                <div class="section-header">
+                    <div class="section-label">CORE CAPABILITIES</div>
+                    <h2 class="section-title display">ServiceNow Expertise</h2>
+                    <p class="section-description">Comprehensive platform development capabilities spanning the entire ServiceNow ecosystem</p>
+                </div>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-number display">01</div>
+                        <h3 class="display">Platform Development</h3>
+                        <p>Custom application development with modern architecture patterns. Building scalable, maintainable solutions that follow ServiceNow best practices and upgrade-safe development standards.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number display">02</div>
+                        <h3 class="display">Process Automation</h3>
+                        <p>Flow Designer orchestration and workflow automation. Eliminating manual tasks and accelerating business processes through intelligent automation and business rule optimization.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number display">03</div>
+                        <h3 class="display">System Integration</h3>
+                        <p>Integration Hub and REST API development. Connecting ServiceNow with enterprise systems through robust, scalable integrations using modern integration patterns.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-number display">04</div>
+                        <h3 class="display">Data & Analytics</h3>
+                        <p>Performance Analytics and custom reporting. Data-driven insights through advanced analytics, dashboards, and real-time performance monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="projects-content">
+                <div class="section-header">
+                    <div class="section-label">PORTFOLIO</div>
+                    <h2 class="section-title display">Featured Projects</h2>
+                    <p class="section-description">Enterprise solutions delivering measurable business impact</p>
+                </div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image">🚀</div>
+                        <div class="project-info">
+                            <h3 class="display">Enterprise Service Portal</h3>
+                            <div class="project-tags">
+                                <span class="tag">ServiceNow</span>
+                                <span class="tag">Portal</span>
+                                <span class="tag">Angular</span>
+                                <span class="tag">UI/UX</span>
+                            </div>
+                            <p class="project-description">Complete redesign of enterprise IT service portal serving 50,000+ users. Custom widgets, responsive design, and intelligent search. Reduced ticket resolution time by 40% and improved satisfaction scores by 65%.</p>
+                            <a href="#" class="project-link">View Case Study →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">⚡</div>
+                        <div class="project-info">
+                            <h3 class="display">Automated Onboarding</h3>
+                            <div class="project-tags">
+                                <span class="tag">Workflow</span>
+                                <span class="tag">Integration</span>
+                                <span class="tag">HRSD</span>
+                            </div>
+                            <p class="project-description">Comprehensive employee onboarding automation integrating HR, IT provisioning, and facility management. Orchestrated complex workflows reducing onboarding from 5 days to 2 hours.</p>
+                            <a href="#" class="project-link">View Case Study →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">🔗</div>
+                        <div class="project-info">
+                            <h3 class="display">CMDB Intelligence</h3>
+                            <div class="project-tags">
+                                <span class="tag">CMDB</span>
+                                <span class="tag">API</span>
+                                <span class="tag">Discovery</span>
+                            </div>
+                            <p class="project-description">Custom CMDB integration with third-party asset management. Automated discovery and reconciliation of 10,000+ configuration items with real-time accuracy and relationship mapping.</p>
+                            <a href="#" class="project-link">View Case Study →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-section" id="experience">
+            <div class="experience-content">
+                <div class="section-header">
+                    <div class="section-label">CAREER</div>
+                    <h2 class="section-title display">Professional Journey</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="display">Senior ServiceNow Developer</h3>
+                                <div class="timeline-company">Enterprise Solutions Inc.</div>
+                            </div>
+                            <div class="timeline-date">2022 - Present</div>
+                        </div>
+                        <p class="timeline-description">Leading ServiceNow platform development for Fortune 500 clients. Architecting custom applications, managing complex integrations, and mentoring development teams. Achieved 99.9% instance uptime and reduced technical debt by 60%.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="display">ServiceNow Developer</h3>
+                                <div class="timeline-company">Tech Innovations LLC</div>
+                            </div>
+                            <div class="timeline-date">2019 - 2022</div>
+                        </div>
+                        <p class="timeline-description">Developed and maintained ServiceNow applications across ITSM, ITOM, and HRSD modules. Implemented automated workflows, custom integrations, and service catalog enhancements. Delivered 15+ major projects on time.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="display">Junior ServiceNow Developer</h3>
+                                <div class="timeline-company">Digital Services Group</div>
+                            </div>
+                            <div class="timeline-date">2017 - 2019</div>
+                        </div>
+                        <p class="timeline-description">Started ServiceNow career focusing on incident management, catalog development, and workflow automation. Gained platform certifications and contributed to successful ITSM implementations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <div class="skills-content">
+                <div class="section-header">
+                    <div class="section-label">TECHNICAL STACK</div>
+                    <h2 class="section-title display">Skills & Technologies</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <h3 class="display">ServiceNow</h3>
+                        <ul>
+                            <li>Platform Development</li>
+                            <li>ITSM / ITOM / ITBM</li>
+                            <li>Flow Designer</li>
+                            <li>Integration Hub</li>
+                            <li>Service Portal</li>
+                            <li>Performance Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="display">Development</h3>
+                        <ul>
+                            <li>JavaScript / ES6+</li>
+                            <li>GlideScript / GlideAPI</li>
+                            <li>AngularJS / Angular</li>
+                            <li>HTML5 / CSS3</li>
+                            <li>SQL / Database Design</li>
+                            <li>REST / SOAP APIs</li>
+                        </ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="display">DevOps & Tools</h3>
+                        <ul>
+                            <li>Git / GitHub</li>
+                            <li>VS Code / Studio</li>
+                            <li>Postman / API Testing</li>
+                            <li>JIRA / Agile</li>
+                            <li>Azure DevOps / CI/CD</li>
+                            <li>Docker / Containers</li>
+                        </ul>
+                    </div>
+                    <div class="skill-box">
+                        <h3 class="display">Certifications</h3>
+                        <ul>
+                            <li>CSA - System Administrator</li>
+                            <li>CAD - Application Developer</li>
+                            <li>CIS - ITSM</li>
+                            <li>CIS - Discovery</li>
+                            <li>Agile Certified Practitioner</li>
+                            <li>ITIL Foundation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="contact-content">
+                <h2 class="display">Let's Build Something Great</h2>
+                <p>Available for freelance projects, consulting, and full-time opportunities</p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link display">Email</a>
+                    <a href="https://linkedin.com/in/yourprofile" class="contact-link display">LinkedIn</a>
+                    <a href="https://github.com/yourusername" class="contact-link display">GitHub</a>
+                    <a href="#" class="contact-link display">Download Resume</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="display">&copy; 2026 Your Name • ServiceNow Developer & Solutions Architect</p>
+    </footer>
+</body>
+</html>

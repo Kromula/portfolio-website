@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 4: Organic & Soft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF8F0;
+            --warm-white: #FFFBF5;
+            --sage: #B4C7B8;
+            --forest: #6B8E77;
+            --terracotta: #D8866B;
+            --charcoal: #3A3D3C;
+            --soft-gray: #9B9B9B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Literata', serif;
+        }
+
+        /* Soft organic shapes in background */
+        .organic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .organic-bg .shape {
+            position: absolute;
+            border-radius: 50% 40% 60% 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--sage);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--terracotta);
+            top: 50%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--forest);
+            bottom: 10%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            background: rgba(255, 248, 240, 0.8);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--forest);
+        }
+
+        .nav-links a:hover::after {
+            opacity: 1;
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .hero-text .highlight {
+            color: var(--forest);
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--soft-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--forest);
+            color: var(--warm-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(107, 142, 119, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(107, 142, 119, 0.3);
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, var(--sage), var(--forest));
+            height: 450px;
+            border-radius: 200px 200px 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--warm-white);
+            box-shadow: 0 20px 60px rgba(107, 142, 119, 0.2);
+        }
+
+        /* ServiceNow Section */
+        .servicenow-section {
+            background: linear-gradient(to bottom, var(--warm-white), var(--cream));
+            padding: 6rem 3rem;
+            margin: 4rem 0;
+        }
+
+        .servicenow-content {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .servicenow-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--soft-gray);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .expertise-card {
+            background: var(--warm-white);
+            padding: 3rem;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .expertise-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--sage), var(--forest));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--warm-white);
+        }
+
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .expertise-card p {
+            color: var(--soft-gray);
+            line-height: 1.7;
+        }
+
+        /* Projects */
+        .projects-section {
+            max-width: 1300px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+        }
+
+        .projects-section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            color: var(--forest);
+            margin-bottom: 1rem;
+        }
+
+        .project-card {
+            background: var(--warm-white);
+            border-radius: 40px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-visual {
+            background: linear-gradient(135deg, var(--sage), var(--terracotta));
+            height: 250px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--warm-white);
+        }
+
+        .project-info h3 {
+            font-size: 2rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1.2rem;
+            background: var(--sage);
+            color: var(--warm-white);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: var(--soft-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            color: var(--forest);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        /* Experience */
+        .experience-section {
+            background: linear-gradient(to bottom, var(--cream), var(--warm-white));
+            padding: 6rem 3rem;
+            margin: 6rem 0;
+        }
+
+        .experience-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .experience-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            color: var(--forest);
+            margin-bottom: 4rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            bottom: 1rem;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--sage), var(--terracotta));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            box-shadow: 0 0 0 4px var(--warm-white);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.8rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .timeline-description {
+            color: var(--soft-gray);
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skills-section {
+            max-width: 1300px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+        }
+
+        .skills-section h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            color: var(--forest);
+            margin-bottom: 3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--warm-white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.6rem 0;
+            color: var(--soft-gray);
+            border-bottom: 1px solid rgba(107, 142, 119, 0.1);
+            transition: all 0.3s;
+        }
+
+        .skill-category li:hover {
+            color: var(--charcoal);
+            padding-left: 0.5rem;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(135deg, var(--forest), var(--sage));
+            padding: 8rem 3rem;
+            margin-top: 6rem;
+            text-align: center;
+            color: var(--warm-white);
+        }
+
+        .contact-content h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            padding: 1.2rem 2.5rem;
+            background: var(--warm-white);
+            color: var(--forest);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: var(--warm-white);
+            padding: 2rem 3rem;
+            text-align: center;
+            color: var(--soft-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero,
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header,
+            .hero,
+            .servicenow-section,
+            .projects-section,
+            .experience-section,
+            .skills-section,
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="organic-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo serif">Your Name</div>
+            <ul class="nav-links">
+                <li><a href="#servicenow">ServiceNow</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1 class="serif">ServiceNow Developer <span class="highlight">& Digital Craftsperson</span></h1>
+                <p>I create thoughtful enterprise solutions that blend technical excellence with human-centered design. Specializing in ServiceNow platform development, automation, and seamless integrations.</p>
+                <a href="#contact" class="cta-button">Start a Conversation</a>
+            </div>
+            <div class="hero-visual">✨</div>
+        </section>
+
+        <section class="servicenow-section" id="servicenow">
+            <div class="servicenow-content">
+                <h2 class="serif">ServiceNow Expertise</h2>
+                <p class="section-intro">Building elegant solutions for complex enterprise challenges with care and precision</p>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-icon">🎨</div>
+                        <h3>Platform Development</h3>
+                        <p>Crafting custom applications with clean architecture, thoughtful design, and sustainable code that grows with your business needs.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">⚙️</div>
+                        <h3>Intelligent Automation</h3>
+                        <p>Designing workflows that feel natural and intuitive, reducing manual tasks while maintaining the human touch where it matters.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">🔗</div>
+                        <h3>Seamless Integration</h3>
+                        <p>Connecting systems with grace through REST APIs, MID servers, and custom protocols that work reliably behind the scenes.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="expertise-icon">🌱</div>
+                        <h3>Sustainable Practices</h3>
+                        <p>Following ServiceNow best practices with upgrade-safe development, optimal performance, and long-term maintainability in mind.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <h2 class="serif">Selected Projects</h2>
+            <p class="section-intro">Recent work that demonstrates thoughtful problem-solving and technical craft</p>
+
+            <div class="project-card">
+                <div class="project-visual">💼</div>
+                <div class="project-info">
+                    <h3>IT Service Portal Redesign</h3>
+                    <div class="project-tags">
+                        <span class="tag">ServiceNow</span>
+                        <span class="tag">UI/UX Design</span>
+                        <span class="tag">Service Portal</span>
+                    </div>
+                    <p class="project-description">Reimagined enterprise IT service portal with user-centered design principles. Created custom widgets and responsive layouts that reduced ticket resolution time by 40% while improving user satisfaction.</p>
+                    <a href="#" class="project-link">Explore this project →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-visual">🚀</div>
+                <div class="project-info">
+                    <h3>Automated Onboarding System</h3>
+                    <div class="project-tags">
+                        <span class="tag">Workflow</span>
+                        <span class="tag">Integration</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <p class="project-description">Developed a comprehensive employee onboarding automation that connects HR, IT, and facilities. Transformed a 5-day manual process into a seamless 2-hour automated experience.</p>
+                    <a href="#" class="project-link">Explore this project →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-visual">📊</div>
+                <div class="project-info">
+                    <h3>CMDB Integration Platform</h3>
+                    <div class="project-tags">
+                        <span class="tag">CMDB</span>
+                        <span class="tag">API Development</span>
+                        <span class="tag">Data Sync</span>
+                    </div>
+                    <p class="project-description">Built custom integration between ServiceNow CMDB and third-party asset management systems. Automated discovery and reconciliation of 10,000+ configuration items with real-time accuracy.</p>
+                    <a href="#" class="project-link">Explore this project →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-section" id="experience">
+            <div class="experience-content">
+                <h2 class="serif">Professional Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 - Present</div>
+                        <h3>Senior ServiceNow Developer</h3>
+                        <div class="timeline-company">Enterprise Solutions Inc.</div>
+                        <p class="timeline-description">Leading ServiceNow platform development for Fortune 500 clients. Architecting custom applications, managing integrations, and mentoring junior developers. Achieved 99.9% instance uptime and reduced technical debt by 60% through thoughtful refactoring.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 - 2022</div>
+                        <h3>ServiceNow Developer</h3>
+                        <div class="timeline-company">Tech Innovations LLC</div>
+                        <p class="timeline-description">Developed and maintained ServiceNow applications across ITSM, ITOM, and HRSD modules. Implemented automated workflows and custom integrations. Successfully delivered 15+ major projects with focus on quality and user experience.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2017 - 2019</div>
+                        <h3>Junior ServiceNow Developer</h3>
+                        <div class="timeline-company">Digital Services Group</div>
+                        <p class="timeline-description">Started ServiceNow career focusing on incident management, catalog items, and workflow development. Gained platform certifications and contributed to successful ITSM implementations for growing enterprises.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <h2 class="serif">Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>ServiceNow</h3>
+                    <ul>
+                        <li>Platform Development</li>
+                        <li>ITSM / ITOM / ITBM</li>
+                        <li>Flow Designer</li>
+                        <li>Integration Hub</li>
+                        <li>Service Portal</li>
+                        <li>Performance Analytics</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Development</h3>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>GlideScript</li>
+                        <li>AngularJS</li>
+                        <li>HTML / CSS</li>
+                        <li>SQL</li>
+                        <li>REST / SOAP APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>VS Code</li>
+                        <li>Postman</li>
+                        <li>JIRA</li>
+                        <li>Azure DevOps</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li>CSA - System Administrator</li>
+                        <li>CAD - Application Developer</li>
+                        <li>CIS - ITSM</li>
+                        <li>CIS - Discovery</li>
+                        <li>Agile Certified Practitioner</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="contact-content">
+                <h2 class="serif">Let's Create Something Together</h2>
+                <p>Available for freelance projects, consulting, and meaningful collaborations</p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">Email Me</a>
+                    <a href="https://linkedin.com/in/yourprofile" class="contact-link">LinkedIn</a>
+                    <a href="https://github.com/yourusername" class="contact-link">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Your Name • Designed with care</p>
+    </footer>
+</body>
+</html>
