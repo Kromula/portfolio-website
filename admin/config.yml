@@ -2,6 +2,8 @@ backend:
   name: github
   repo: Kromula/portfolio-website
   branch: master
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
 # Optional: Use this for local development
 # local_backend: true
