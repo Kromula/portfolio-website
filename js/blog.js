@@ -1,18 +1,18 @@
 // Blog posts loader
 let allPosts = [];
 let currentFilter = 'all';
+let loader;
 
 // Load blog posts from markdown files
 async function loadBlogPosts() {
     try {
-        // In production, this will load from the blog folder
-        // For now, we'll check if there are any posts
-        const response = await fetch('/blog/posts.json').catch(() => null);
+        // Initialize markdown loader
+        loader = new MarkdownLoader('Kromula/portfolio-website', 'master');
 
-        if (response && response.ok) {
-            allPosts = await response.json();
-            displayPosts(allPosts);
-        } else {
+        // Fetch all markdown files from blog directory
+        const posts = await loader.fetchMarkdownFiles('blog');
+
+        if (posts.length === 0) {
             // No posts yet - show placeholder
             document.getElementById('postsContainer').innerHTML = `
                 <div class="no-posts">
@@ -20,10 +20,41 @@ async function loadBlogPosts() {
                     <p>Check back soon for insights and articles on ServiceNow and ITSM.</p>
                 </div>
             `;
+            return;
         }
+
+        // Format posts for display
+        allPosts = posts.map(post => ({
+            ...post,
+            icon: getCategoryIcon(post.category),
+            readTime: loader.calculateReadTime(post.body)
+        }));
+
+        displayPosts(allPosts);
     } catch (error) {
-        console.log('No posts found yet');
+        console.error('Error loading posts:', error);
+        document.getElementById('postsContainer').innerHTML = `
+            <div class="no-posts">
+                <h2>Error loading posts</h2>
+                <p>Please try again later.</p>
+            </div>
+        `;
     }
+}
+
+// Get icon based on category
+function getCategoryIcon(category) {
+    const icons = {
+        'ServiceNow': '⚡',
+        'ITSM': '🎫',
+        'Employee Center': '👥',
+        'App Engine': '⚙️',
+        'CMDB': '🗄️',
+        'Best Practices': '⭐',
+        'Technical': '💻',
+        'Opinion': '💭'
+    };
+    return icons[category] || '📝';
 }
 
 // Display posts in the grid
