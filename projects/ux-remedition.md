@@ -36,10 +36,11 @@ Customer then led internal workshops to draft a new Taxonomy design which was mu
 
 ## Key Features
 
-- Rdesigned modern layout. 
+- Redesigned modern layout. 
 - Implemented new ServiceNow features like updated My Requests, left side navigation and modern ticket layout.  
 - Removed REQ from portal in a configurable, not customised, method.  
 - Introduced notifications to portal.
+- Additions of CSS styling for a unique experience tailored to the customers branding.
 
 
 ## Screenshots
