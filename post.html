@@ -333,6 +333,7 @@
                 <li><a href="index.html#projects">Projects</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="how-to.html">How-To</a></li>
+                <li><a href="asset-library.html">Asset Library</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
@@ -376,7 +377,7 @@
         async function loadPost(slug, type) {
             try {
                 const loader = new MarkdownLoader('Kromula/portfolio-website', 'master');
-                const directory = type === 'how-to' ? 'how-to' : type === 'project' ? 'projects' : 'blog';
+                const directory = type === 'how-to' ? 'how-to' : type === 'project' ? 'projects' : type === 'asset' ? 'assets' : 'blog';
                 const url = `https://raw.githubusercontent.com/Kromula/portfolio-website/master/${directory}/${slug}.md`;
 
                 const post = await loader.fetchAndParse(url);
@@ -395,6 +396,9 @@
                 } else if (type === 'project') {
                     document.querySelector('.back-link a').href = 'index.html#projects';
                     document.querySelector('.back-link a').textContent = '← Back to Projects';
+                } else if (type === 'asset') {
+                    document.querySelector('.back-link a').href = 'asset-library.html';
+                    document.querySelector('.back-link a').textContent = '← Back to Asset Library';
                 }
 
                 // Convert markdown to HTML
@@ -478,7 +482,7 @@
                 document.getElementById('post-container').innerHTML = `
                     <div class="loading">
                         <h2>Error loading post</h2>
-                        <p>The post could not be found. <a href="${type === 'how-to' ? 'how-to.html' : 'blog.html'}">Go back</a></p>
+                        <p>The post could not be found. <a href="${type === 'how-to' ? 'how-to.html' : type === 'asset' ? 'asset-library.html' : 'blog.html'}">Go back</a></p>
                     </div>
                 `;
             }
