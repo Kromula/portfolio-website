@@ -3,7 +3,7 @@ title: UX Remediation
 description: Portal remediation project to enhance an existing Employee Center.
 date: 2026-02-05T12:00:00.000Z
 status: In Progress
-featured_image: images/uploads/new-site.png
+featured_image: images/uploads/fmazar_esc.png
 tags:
   - employeecenter
   - itsm
@@ -36,16 +36,17 @@ Customer then led internal workshops to draft a new Taxonomy design which was mu
 
 ## Key Features
 
-- Rdesigned modern layout. 
+- Redesigned modern layout. 
 - Implemented new ServiceNow features like updated My Requests, left side navigation and modern ticket layout.  
 - Removed REQ from portal in a configurable, not customised, method.  
 - Introduced notifications to portal.
+- Additions of CSS styling for a unique experience tailored to the customers branding.
 
 
 ## Screenshots
 
 ![Before](images/uploads/old-esc.png "Before implementation")
 
-![After](images/uploads/new-site.png "After implementation")
+![After](images/uploads/fmazar_esc.png "After implementation")
 
 ## Results
