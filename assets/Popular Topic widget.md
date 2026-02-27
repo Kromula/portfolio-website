@@ -10,7 +10,7 @@ platform: ServiceNow
 version: 1.0.0
 category: Employee Center
 # category options: ITSM, Employee Center, App Engine, CMDB, Portal, Integration
-featured_image: /images/assets/populartopic.png
+featured_image: images/assets/populartopic.png
 tags:
   - servicenow
   - script
@@ -24,7 +24,7 @@ draft: false
 
 Updated Popular Topics widget to show Topic banner images on the widget, with some modern styling and interactions.
 
- ![Popular Topic Widget](/images/assets/populartopic.png)
+ ![Popular Topic Widget](images/assets/populartopic.png)
 
 ## Features
 
