@@ -22,7 +22,7 @@ draft: false
 
 Clean Minimal email notification. This HTML design you can bring into your instance into either a notification in full, or break up in modular design using Email Templates and Layouts.
 
-![Screenshot](portfolio-website/images/assets/clean_minimal.png)
+ ![Screenshot](portfolio-website/images/assets/clean_minimal.png)
 
 ## Features
 
