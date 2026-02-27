@@ -49,6 +49,8 @@ For a more modular approach you can use Email templates and layouts.
 ## Approval based Notification
 Add this block into your HTML to configure a beautiful display of approval buttons
 
+![Screenshot](portfolio-website/images/assets/approvals.png)
+
 ```html
 <!-- ════════════════════════════════════════════════
              APPROVE / DECLINE ACTION CARD
