@@ -43,8 +43,177 @@ For a more modular approach you can use Email templates and layouts.
 ## Information based Notification
 
 ```html
-// If the asset is a script, paste the full code here
-// Use appropriate language tag: javascript, xml, css, html, etc.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServiceNow Notification</title>
+</head>
+<body style="margin:0;padding:0;background:#F4F4F4;font-family:Arial,sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" border="0"
+    style="background:#F4F4F4;padding:40px 20px;">
+    <tr>
+      <td align="center">
+
+        <table width="600" cellpadding="0" cellspacing="0" border="0"
+          style="max-width:600px;width:100%;border-radius:12px;overflow:hidden;
+                 box-shadow:0 4px 24px rgba(0,0,0,0.14);">
+
+          <!-- 6px gradient top strip -->
+          <tr>
+            <td height="6" style="background:linear-gradient(90deg,#265173 0%,#336697 25%,#5D93CD 55%,#84ADD8 80%,#ACC7E2 100%);
+                                  font-size:0;line-height:0;">&nbsp;</td>
+          </tr>
+
+          <!-- ═══ WHITE HEADER ═══ -->
+          <tr>
+            <td style="background-color:#ffffff;padding:22px 40px;border-bottom:1px solid #e5e7eb;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="middle">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="background-color:#F4F4F4;border:2px dashed #ACC7E2;border-radius:6px;padding:8px 18px;">
+                          <p style="margin:0;color:#84ADD8;font-size:12px;font-weight:700;font-family:Arial,sans-serif;letter-spacing:0.05em;">[ YOUR LOGO ]</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td align="right" valign="middle">
+                    <span style="color:#6b7280;font-size:12px;font-family:Arial,sans-serif;">
+                      IT Service Notification
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          
+        <!-- ═══ BODY ═══ -->
+        <tr>
+          <td style="background-color:#ffffff;padding:28px 40px 32px;">
+
+            <h2 style="margin:0 0 5px 0;color:#111827;font-size:17px;font-weight:600;font-family:Arial,sans-serif;">
+              Your ticket has been updated
+            </h2>
+            <p style="margin:0 0 20px 0;color:#6b7280;font-size:12px;font-family:Arial,sans-serif;">
+              Incident ${number} &bull; ${opened_at}
+            </p>
+
+            <p style="margin:0 0 10px 0;color:#374151;font-size:14px;font-family:Arial,sans-serif;">
+              Hello <strong>${caller_id.first_name}</strong>,
+            </p>
+            <p style="margin:0 0 20px 0;color:#374151;font-size:14px;line-height:1.6;font-family:Arial,sans-serif;">
+              Your incident ticket has been updated with new information. Please review the changes and take any necessary action.
+            </p>
+
+            <!-- Ticket Info Card -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0"
+              style="background-color:#F4F4F4;border-left:4px solid #5D93CD;border-radius:6px;margin-bottom:22px;">
+              <tr>
+                <td style="padding:16px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td width="50%" style="padding-bottom:12px;vertical-align:top;">
+                        <p style="margin:0 0 2px 0;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;font-family:Arial,sans-serif;">Status</p>
+                        <p style="margin:0;color:#111827;font-size:13px;font-weight:600;font-family:Arial,sans-serif;">${state}</p>
+                      </td>
+                      <td width="50%" style="padding-bottom:12px;vertical-align:top;">
+                        <p style="margin:0 0 2px 0;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;font-family:Arial,sans-serif;">Priority</p>
+                        <p style="margin:0;color:#111827;font-size:13px;font-weight:600;font-family:Arial,sans-serif;">${priority}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="50%" style="vertical-align:top;">
+                        <p style="margin:0 0 2px 0;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;font-family:Arial,sans-serif;">Assigned To</p>
+                        <p style="margin:0;color:#111827;font-size:13px;font-weight:600;font-family:Arial,sans-serif;">${assigned_to.name}</p>
+                      </td>
+                      <td width="50%" style="vertical-align:top;">
+                        <p style="margin:0 0 2px 0;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;font-family:Arial,sans-serif;">Updated</p>
+                        <p style="margin:0;color:#111827;font-size:13px;font-weight:600;font-family:Arial,sans-serif;">${sys_updated_on}</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Action Button -->
+            <!-- ⚠ Replace YOURINSTANCE with your ServiceNow instance name (e.g. companyname) -->
+            <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:22px;">
+              <tr>
+                <td bgcolor="#336697" style="border-radius:6px;mso-padding-alt:0;">
+                  <a href="https://YOURINSTANCE.service-now.com${URI}"
+                    style="display:inline-block;color:#ffffff;font-family:Arial,sans-serif;font-size:13px;font-weight:600;text-decoration:none;padding:11px 26px;border-radius:6px;">
+                    View Ticket Details
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <p style="margin:0 0 20px 0;color:#6b7280;font-size:13px;font-family:Arial,sans-serif;">
+              If you have any questions, please contact our support team.
+            </p>
+
+            <!-- Sign-off -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0"
+              style="border-top:1px solid #e5e7eb;">
+              <tr>
+                <td style="padding-top:16px;">
+                  <p style="margin:0 0 3px 0;color:#6b7280;font-size:12px;font-family:Arial,sans-serif;">Best regards,</p>
+                  <p style="margin:0;color:#111827;font-size:13px;font-weight:600;font-family:Arial,sans-serif;">ServiceNow Support Team</p>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+          
+        <tr>
+          <td style="background-color:#336697;padding:28px 40px 26px;border-radius:0 0 12px 12px;">
+            <p style="color:#ffffff;font-size:22px;font-weight:700;margin:0 0 10px 0;font-family:Arial,sans-serif;">Thank you</p>
+            <p style="color:rgba(255,255,255,0.72);font-size:12px;margin:0 0 3px 0;font-family:Arial,sans-serif;">[YOUR COMPANY ADDRESS]</p>
+            <p style="color:rgba(255,255,255,0.72);font-size:12px;margin:0 0 22px 0;font-family:Arial,sans-serif;">&copy; [YEAR] [YOUR COMPANY]. All rights reserved.</p>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td valign="middle">
+                  <a href="${mail_preferences_link}" style="color:#ffffff;font-size:12px;font-family:Arial,sans-serif;text-decoration:underline;">Manage Notification Preferences</a>
+                </td>
+                <td align="right" valign="middle">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding-left:6px;">
+                        <a href="#" style="display:block;width:28px;height:28px;background:rgba(255,255,255,0.18);border-radius:4px;text-align:center;line-height:28px;color:rgba(255,255,255,0.80);font-size:11px;font-family:Arial,sans-serif;font-weight:700;text-decoration:none;">in</a>
+                      </td>
+                      <td style="padding-left:6px;">
+                        <a href="#" style="display:block;width:28px;height:28px;background:rgba(255,255,255,0.18);border-radius:4px;text-align:center;line-height:28px;color:rgba(255,255,255,0.80);font-size:12px;font-family:Arial,sans-serif;font-weight:700;text-decoration:none;">&#120143;</a>
+                      </td>
+                      <td style="padding-left:6px;">
+                        <a href="#" style="display:block;width:28px;height:28px;background:rgba(255,255,255,0.18);border-radius:4px;text-align:center;line-height:28px;color:rgba(255,255,255,0.80);font-size:11px;font-family:Arial,sans-serif;font-weight:700;text-decoration:none;">&#9654;</a>
+                      </td>
+                      <td style="padding-left:6px;">
+                        <a href="#" style="display:block;width:28px;height:28px;background:rgba(255,255,255,0.18);border-radius:4px;text-align:center;line-height:28px;color:rgba(255,255,255,0.80);font-size:12px;font-family:Arial,sans-serif;font-weight:700;text-decoration:none;">f</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
 ```
 ## Approval based Notification
 Add this block into your HTML to configure a beautiful display of approval buttons
