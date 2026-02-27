@@ -10,7 +10,7 @@ platform: ServiceNow
 version: 1.0.0
 category: Notification
 # category options: ITSM, Employee Center, App Engine, CMDB, Portal, Integration, Notification
-featured_image: portfolio-website/images/assets/clean_minimal.png
+featured_image: images/assets/clean_minimal.png
 tags:
   - servicenow
   - script
@@ -22,7 +22,7 @@ draft: false
 
 Clean Minimal email notification. This HTML design you can bring into your instance into either a notification in full, or break up in modular design using Email Templates and Layouts.
 
- ![Screenshot](portfolio-website/images/assets/clean_minimal.png)
+ ![Screenshot](images/assets/clean_minimal.png)
 
 ## Features
 
@@ -49,7 +49,7 @@ For a more modular approach you can use Email templates and layouts.
 ## Approval based Notification
 Add this block into your HTML to configure a beautiful display of approval buttons
 
-![Screenshot](portfolio-website/images/assets/approvals.png)
+![Screenshot](images/assets/approvals.png)
 
 ```html
 <!-- ════════════════════════════════════════════════
