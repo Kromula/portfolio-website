@@ -24,7 +24,7 @@ draft: false
 
 Updated Popular Topics widget to show Topic banner images on the widget, with some modern styling and interactions.
 
- ![Screenshot](images/assets/populartopic.png)  
+ ![Screenshot](portfolio-website/images/assets/populartopic.png)  
 
 ## Features
 
