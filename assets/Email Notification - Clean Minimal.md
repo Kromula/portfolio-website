@@ -80,11 +80,11 @@ Add this block into your HTML to configure a beautiful display of approval butto
 ## Configure to your branding or preference
 
 ### Replace text placeholders
-[YOUR_LOGO_URL]	URL of your logo uploaded in System UI › Images
-[YOUR_COMPANY]	Your company or team name
-[YOUR_ADDRESS]	Your company postal address
-[YEAR]	Current copyright year, e.g. 2026
-YOURINSTANCE	ServiceNow subdomain (in the View Ticket button href)
+[YOUR_LOGO_URL]	URL of your logo uploaded in System UI › Images  
+[YOUR_COMPANY]	Your company or team name  
+[YOUR_ADDRESS]	Your company postal address  
+[YEAR]	Current copyright year, e.g. 2026  
+YOURINSTANCE	ServiceNow subdomain (in the View Ticket button href)  
 
 ### Apply your brand colors
 Change hexcodes in the HTML to align your branding and colour preference. 
