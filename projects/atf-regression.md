@@ -1,5 +1,5 @@
 ---
-title: ATF Regression & TDD Advisory
+title: ATF Advisory and Best Practices
 description: Advisory engagement to mature a customer's Automated Test Framework usage, breaking large manual tests into granular server-side ATF tests that roll up into regression suites and support a test-driven development approach.
 date: 2026-10-14T12:00:00.000Z
 status: In Progress
