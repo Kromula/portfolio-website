@@ -2,7 +2,7 @@
 title: UX Remediation
 description: Portal remediation project to enhance an existing Employee Center.
 date: 2026-02-05T12:00:00.000Z
-status: In Progress
+status: Complete
 featured_image: images/uploads/fmazar_esc.png
 tags:
   - employeecenter
